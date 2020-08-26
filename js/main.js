@@ -1,5 +1,5 @@
 let angle = 0;
-let translateY = 0, rotY = 0;
+let translateY = 0, rotX = 0, rotY = 0;
 let grow = true;
 
 function setup() {
@@ -8,7 +8,9 @@ function setup() {
 }
   
 function draw() {
-  	background(255);
+  	// background(255);
+	//   background(12, 17, 89);
+	  background(6, 8, 40)
 	// ambientLight(200, 155, 155);
 	setLights();
 	// stroke("#eeeeee");
@@ -30,8 +32,11 @@ function draw() {
 		}
 	}
 
+	//  specularMaterial(255);
+	 
 	// rotate entire scene
 	push();
+		rotateX(rotX);
 		rotateY(rotY);
 		for(let i = 0; i < 10; i++) {
 			push();
@@ -49,17 +54,22 @@ function draw() {
 					sphere(15, 100, 100);
 				pop();
 				push();
+					// rotateY(angle)
 					translate(-translateY, translateY * 2, 1);
+					sphere(15, 100, 100);
+				pop();
+				// push();
+				// 	rotateX(30);
+				// 	translate(1, translateY * 3, 1);
+				// 	sphere(15, 100, 100);
+				// pop();
+				push();
+					rotateX(30);
+					translate(1, translateY * 2, 1);
 					sphere(15, 100, 100);
 				pop();
 				box(15, 300, 10, 12, 12);
 			pop();
-
-			// push();
-			// 	rotateY(angle);
-			// 	// translate(1, translateY);
-			// 	sphere(15, 100, 100);
-			// pop();
 		}
 	pop();
 }
@@ -67,7 +77,10 @@ function draw() {
 function setLights() {
 	// ambientLight(100, 200, 155);
 	
-	pointLight(255,0, 0, 100, 100, 100);//~
+	pointLight(223, 40, 164, 100, 100, 0);
+	pointLight(223, 40, 164, 0, 0, 1000);/////
+	pointLight(223, 40, 164, width/2, height/2, -1000);/////
+	// pointLight(223, 40, 164, 100, 100, -1500);
 	pointLight(0, 255, 255, 100, -100, 100);//~
 	pointLight(0, 0, 255, width, 0, 100);//
 	
@@ -88,6 +101,12 @@ function keyPressed() {
 			break;
 		case RIGHT_ARROW:
 			rotY -= 0.5;
+			break;
+		case UP_ARROW:
+			rotX += 0.5;
+			break;
+		case DOWN_ARROW:
+			rotX -= 0.5;
 			break;
 		// ascii
 		default: 
