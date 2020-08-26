@@ -81,6 +81,7 @@ function render() {
 				// pop();
 				push();
 					rotateX(30);
+					scale(2);	
 					translate(1, translateY * 2, 1);
 					sphere(15, 100, 100);
 				pop();
