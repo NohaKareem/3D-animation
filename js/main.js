@@ -9,10 +9,9 @@ function setup() {
   
 function draw() {
   	background(255);
-	ambientLight(200, 155, 155);
-	
-	pointLight(255,0, 0, 100, 100, 100);
-	pointLight(0, 255, 255, 100, -100, 100);
+	// ambientLight(200, 155, 155);
+	setLights();
+	// stroke("#eeeeee");
 
 	smooth();
 
@@ -40,8 +39,39 @@ function draw() {
 				translate(1, translateY);
 				box(300, 15, 3, 12, 12);
 			pop();
+
+			push();
+				rotateX(angle + 10);
+				translate(1, translateY);
+				push();
+					translate(translateY, translateY * 2, 1);
+					// translateY(angle + 20)
+					sphere(15, 100, 100);
+				pop();
+				push();
+					translate(-translateY, translateY * 2, 1);
+					sphere(15, 100, 100);
+				pop();
+				box(15, 300, 10, 12, 12);
+			pop();
+
+			// push();
+			// 	rotateY(angle);
+			// 	// translate(1, translateY);
+			// 	sphere(15, 100, 100);
+			// pop();
 		}
 	pop();
+}
+
+function setLights() {
+	// ambientLight(100, 200, 155);
+	
+	pointLight(255,0, 0, 100, 100, 100);//~
+	pointLight(0, 255, 255, 100, -100, 100);//~
+	pointLight(0, 0, 255, width, 0, 100);//
+	
+	// pointLight(0, 255, 255, width, height, 10);//~
 }
 
 // responsive
