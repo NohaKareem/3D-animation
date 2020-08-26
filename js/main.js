@@ -8,9 +8,9 @@ function setup() {
 }
   
 function draw() {
+	background(6, 8, 40);
   	// background(255);
 	//   background(12, 17, 89);
-	  background(6, 8, 40)
 	// ambientLight(200, 155, 155);
 	setLights();
 	// stroke("#eeeeee");
@@ -35,6 +35,22 @@ function draw() {
 	//  specularMaterial(255);
 	 
 	// rotate entire scene
+	push();
+		rotateY(190);
+		render();
+	pop();
+}
+
+function setLights() {
+	// ambientLight(100, 200, 155);
+	
+	pointLight(223, 40, 164, 100, 100, 0);
+	pointLight(223, 40, 164, 0, 0, 1000);
+	pointLight(223, 40, 164, width/2, height/2, -1000);
+	pointLight(223, 191, 40, 100, -100, 100);
+}
+
+function render() {
 	push();
 		rotateX(rotX);
 		rotateY(rotY);
@@ -74,23 +90,19 @@ function draw() {
 	pop();
 }
 
-function setLights() {
-	// ambientLight(100, 200, 155);
-	
-	pointLight(223, 40, 164, 100, 100, 0);
-	pointLight(223, 40, 164, 0, 0, 1000);/////
-	pointLight(223, 40, 164, width/2, height/2, -1000);/////
-	// pointLight(223, 40, 164, 100, 100, -1500);
-	pointLight(0, 255, 255, 100, -100, 100);//~
-	pointLight(0, 0, 255, width, 0, 100);//
-	
-	// pointLight(0, 255, 255, width, height, 10);//~
-}
-
 // responsive
 function windowResized() {
 	resizeCanvas(windowWidth, windowHeight);
 }
+
+// function mousePressed() {
+// 	push();
+// 		translate(width / 4, height / 3);
+// 		scale(0.1);
+// 		rotateY(190);
+// 		render();
+// 	pop();
+// }
 
 // save result
 function keyPressed() {
