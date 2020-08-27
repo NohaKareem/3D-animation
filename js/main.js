@@ -9,15 +9,9 @@ function setup() {
   
 function draw() {
 	background(6, 8, 40);
-  	// background(255);
-	//   background(12, 17, 89);
-	// ambientLight(200, 155, 155);
 	setLights();
-	// stroke("#eeeeee");
-
 	smooth();
 
-	// translateY =  (translateY + 0.5) % 100;
 	if (grow) {
 		if (translateY < 200) {
 			translateY += 0.5;
@@ -32,8 +26,6 @@ function draw() {
 		}
 	}
 
-	//  specularMaterial(255);
-	 
 	// rotate entire scene
 	push();
 		rotateY(190);
@@ -42,14 +34,13 @@ function draw() {
 }
 
 function setLights() {
-	// ambientLight(100, 200, 155);
-	
 	pointLight(223, 40, 164, 100, 100, 0);
 	pointLight(223, 40, 164, 0, 0, 1000);
 	pointLight(223, 40, 164, width/2, height/2, -1000);
 	pointLight(223, 191, 40, 100, -100, 100);
 }
 
+// render art scene
 function render() {
 	push();
 		rotateX(rotX);
@@ -64,30 +55,24 @@ function render() {
 			push();
 				rotateX(angle + 10);
 				translate(1, translateY);
-				push();
-					translate(translateY, translateY * 2, 1);
-					// translateY(angle + 20)
-					sphere(15, 100, 100);
-				pop();
-				push();
-					// rotateY(angle)
-					translate(-translateY, translateY * 2, 1);
-					sphere(15, 100, 100);
-				pop();
-				// push();
-				// 	rotateX(30);
-				// 	translate(1, translateY * 3, 1);
-				// 	sphere(15, 100, 100);
-				// pop();
-				push();
-					rotateX(30);
-					scale(2);	
-					translate(1, translateY * 2, 1);
-					sphere(15, 100, 100);
-				pop();
+
+				renderSphere(1, 0, translateY, translateY * 2);
+				renderSphere(1, 0, -translateY, translateY * 2);
+				renderSphere(2, 30, 1, translateY * 2);
+
 				box(15, 300, 10, 12, 12);
 			pop();
 		}
+	pop();
+}
+
+// render a sphere with custom transformations
+function renderSphere(scaleFactor, rotateAngle, translateX, translateY) {
+	push();
+		scale(scaleFactor);	
+		rotateX(rotateAngle);
+		translate(translateX, translateY, 1);
+		sphere(15, 100, 100);
 	pop();
 }
 
@@ -95,15 +80,6 @@ function render() {
 function windowResized() {
 	resizeCanvas(windowWidth, windowHeight);
 }
-
-// function mousePressed() {
-// 	push();
-// 		translate(width / 4, height / 3);
-// 		scale(0.1);
-// 		rotateY(190);
-// 		render();
-// 	pop();
-// }
 
 // save result
 function keyPressed() {
@@ -121,6 +97,7 @@ function keyPressed() {
 		case DOWN_ARROW:
 			rotX -= 0.5;
 			break;
+
 		// ascii
 		default: 
 			switch(key) {
