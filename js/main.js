@@ -13,26 +13,22 @@ function draw() {
 	smooth();
 
 	if (grow) {
-		if (translateY < 200) {
-			translateY += 0.5;
-		} else {
-			grow = false;
-		}
+		if (translateY < 200) translateY += 0.5;
+		else grow = false;
 	} else {
-		if (translateY > 0) {
-			translateY -= 0.5;
-		} else {
-			grow = true;
-		}
+		if (translateY > 0) translateY -= 0.5;
+		else grow = true;
 	}
 
 	// rotate entire scene
 	push();
 		rotateY(190);
+		scale(0.5);
 		render();
 	pop();
 }
 
+// set scence lights
 function setLights() {
 	pointLight(223, 40, 164, 100, 100, 0);
 	pointLight(223, 40, 164, 0, 0, 1000);
@@ -45,11 +41,12 @@ function render() {
 	push();
 		rotateX(rotX);
 		rotateY(rotY);
+		
 		for(let i = 0; i < 10; i++) {
 			push();
 				rotateX(angle += 0.7);
 				translate(1, translateY);
-				box(300, 15, 3, 12, 12);
+				box(230, 15, 3, 12, 12);
 			pop();
 
 			push();
