@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+.hidden { display: none; }
+
+body {
+	font-family: 'Raleway',  sans-serif;
+	color: white;
+	color: rgb(223, 191, 40);
+	background-color: rgb(6, 8, 40);
+
+	// no scroll 
+	height: 100%;
+	overflow: hidden;
+}
+
+nav {
+	bottom: 0;
+	position: fixed;
+
+	ul {
+		list-style: none;
+		span {
+			font-weight: bold;
+			color: rgb(223, 40, 164);
+		}
+	}
+}

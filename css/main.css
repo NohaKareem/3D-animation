@@ -1,5 +1,26 @@
-@charset "UTF-8";
-
 .hidden {
-	display: none;
+  display: none;
 }
+
+body {
+  font-family: "Raleway", sans-serif;
+  color: white;
+  color: #dfbf28;
+  background-color: #060828;
+  height: 100%;
+  overflow: hidden;
+}
+
+nav {
+  bottom: 0;
+  position: fixed;
+}
+nav ul {
+  list-style: none;
+}
+nav ul span {
+  font-weight: bold;
+  color: #df28a4;
+}
+
+/*# sourceMappingURL=main.css.map */

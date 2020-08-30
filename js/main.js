@@ -1,6 +1,7 @@
 let angle = 0;
 let translateY = 0, rotX = 0, rotY = 0;
 let grow = true;
+let hasBackground = true;
 
 function setup() {
 	createCanvas(windowWidth, windowHeight, WEBGL);
@@ -8,19 +9,13 @@ function setup() {
 }
   
 function draw() {
-	background(6, 8, 40);
+	if(hasBackground) background(6, 8, 40);
 	setLights();
 	smooth();
 
-	if (grow) {
-		if (translateY < 200) translateY += 0.5;
-		else grow = false;
-	} else {
-		if (translateY > 0) translateY -= 0.5;
-		else grow = true;
-	}
+	updateAnimation();
 
-	// rotate entire scene
+	// rotate, and scale, entire scene
 	push();
 		rotateY(190);
 		scale(0.5);
@@ -34,6 +29,17 @@ function setLights() {
 	pointLight(223, 40, 164, 0, 0, 1000);
 	pointLight(223, 40, 164, width/2, height/2, -1000);
 	pointLight(223, 191, 40, 100, -100, 100);
+}
+
+// conditionally update animation parameters 
+function updateAnimation() {
+	if (grow) {
+		if (translateY < 200) translateY += 0.5;
+		else grow = false;
+	} else {
+		if (translateY > 0) translateY -= 0.5;
+		else grow = true;
+	}
 }
 
 // render art scene
@@ -99,7 +105,11 @@ function keyPressed() {
 		default: 
 			switch(key) {
 				case('s'):
-				save('photo.png');
+					save('photo.png');
+				break;
+
+				case('b'):
+					hasBackground = ! hasBackground;
 				break;
 			}
 			break;
