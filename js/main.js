@@ -84,7 +84,7 @@ function windowResized() {
 	resizeCanvas(windowWidth, windowHeight);
 }
 
-// save result
+// interactive menu
 function keyPressed() {
 	// non-ascii
 	switch(keyCode) {
@@ -105,7 +105,7 @@ function keyPressed() {
 		default: 
 			switch(key) {
 				case('s'):
-					save('photo.png');
+					save('animation.png');
 				break;
 
 				case('b'):
